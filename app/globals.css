@@ -2,32 +2,154 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+
+html{
+  font-size: 62.5%;
+}
+
+body{
+  display: flex;
+  min-height: 100vh;
+  font-size: 1.6rem;
+}
+
+/* signin & signup */
+.container-signin, .container-signup {
+  max-width: 400px;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.container-signin h2, .container-signup h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.container-signin form, .container-signup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-signin input, .container-signup input {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.container-signin button, .container-signup button {
+  padding: 0.75rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.container-signin button:hover, .container-signup button:hover {
+  background-color: #005bb5;
+}
+
+.container-signin a, .container-signup a {
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+  color: #0070f3;
+}
+/* signin & signup end */
+
+
+/* sidebar */
+
+.sidebar {
+  width: 130px;
+  background-color: #2F2F2F;
+  padding:  0;
+  border-right: 1px solid #ccc;
+  height: 100vh;
+  padding-top: 1rem;
+  
+  hr{
+    border: none;
+    border-top: 2px solid #FFFFFF1A;
+    width: 85%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  h1{
+
+    padding-left: 1rem;
+    text-align: left;
+    padding-bottom: 1rem;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+
+  nav{
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    
+    div {
+      padding-left: 10px;
+      position: relative;
+
+      a{
+       
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: .8rem;
+        padding: .5rem;
+        text-align: center;
+        color: #FFFFFF66;
+        text-decoration: none;
+        
+        transition: background-color .3s; 
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: 300ms all;
+        
+        &:hover, &.active{
+          background-color: #434343;
+          color: #FFFFFF;
+        }
+        &::after{
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          height: 100%;
+          width: 3px;
+          transition: 300ms all;
+        }
+        &:hover::after, &.active::after{
+          background-color: #2196F3;
+        }
+
+        span{
+          text-align: left;
+        }
+
+      }
+
+    }
+
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/* sidebar */
