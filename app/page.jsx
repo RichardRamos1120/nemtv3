@@ -4,7 +4,6 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import { set } from "mongoose";
 import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
