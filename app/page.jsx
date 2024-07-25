@@ -5,7 +5,8 @@ import { useState, useEffect } from "react";
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import Sidebar from "@/components/Sidebar";
-
+import Topnav from "@/components/Topnav";
+import { MagnifyingGlass } from "@phosphor-icons/react";
 export default function Home() {
   const router = useRouter();
   const [user, setUser] = useState(null);
@@ -38,11 +39,8 @@ export default function Home() {
   
   return (
     <>
-    {user && 
-    <main>
-      <Sidebar />
-      
-    </main>
+    {user &&
+    <div>Loading...</div>
 
 
     }
