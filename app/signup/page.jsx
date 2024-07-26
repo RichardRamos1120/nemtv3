@@ -17,7 +17,7 @@ export default function SignUp() {
     if (error) {
       alert(error.message);
     } else {
-      router.push('/login');
+      window.location.href = '/';
     }
   };
 

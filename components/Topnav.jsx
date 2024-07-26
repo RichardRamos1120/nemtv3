@@ -3,13 +3,43 @@
 
 import Link from "next/link"
 import Image from "next/image"
+import { useEffect, useState } from "react"
+import { supabase } from '@/lib/supabaseClient';
+import { useRouter } from "next/navigation";
 
 import { Question,CaretDown, SignOut, CaretRight, Sliders} from "@phosphor-icons/react";
 
 export default function Topnav() {
-//   infinite error console.log(1)
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // check if the user is logged in with the user session supabase.auth.user()
+    // if not, redirect to the login page
+    const checkUser = async () => {
+      const user = await supabase.auth.getUser();
+      
+      if (!user.data.user) {
+        setUser(null);
+        router.push('/signin');
+      }
+      else {
+        setUser(user.data.user);
+      }
+    }
+    checkUser();
+
+    //cleanup
+    return () => 0;
+    
+  },[router])
+
+
+
   return (
-    <section className="topnav">
+    <>
+      {user && 
+        <section className="topnav">
         <div>
             <p>Help</p>
             <Question size={24} color="#000000" />
@@ -68,5 +98,7 @@ export default function Topnav() {
 
 
     </section>
+      }
+    </>
   )
 }

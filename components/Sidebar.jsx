@@ -3,16 +3,41 @@
 import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from 'next/navigation'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import { supabase } from '@/lib/supabaseClient';
+import { useRouter } from "next/navigation";
 
 export default function Sidebar() {
-  
   const pathname = usePathname() || "/"
-  
+  const router = useRouter();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // check if the user is logged in with the user session supabase.auth.user()
+    // if not, redirect to the login page
+    const checkUser = async () => {
+      const user = await supabase.auth.getUser();
+      
+      if (!user.data.user) {
+        setUser(null);
+        router.push('/signin');
+      }
+      else {
+        setUser(user.data.user);
+      }
+    }
+    checkUser();
+
+    //cleanup
+    return () => 0;
+    
+  },[router])
 
 
 
   return (
+    <>
+    {user &&
     <section className="sidebar">
         <h1>NEMT-APP</h1>
         <hr />
@@ -68,6 +93,8 @@ export default function Sidebar() {
 
         </nav>
 
-      </section>
+    </section>
+    }    
+    </> 
   )
 }

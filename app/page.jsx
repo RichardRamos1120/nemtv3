@@ -463,9 +463,10 @@ export default function Home() {
           
         </div>
       
+      {/* <button onClick={logoutFN}>log out</button> */}
     </main>
 
-
+        
     }
     </>
   );
