@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
+
 import Topnav from "@/components/Topnav";
 import { MagnifyingGlass, CaretDown, CalendarBlank, CaretLeft, CaretRight} from "@phosphor-icons/react";
 export default function Home() {
@@ -40,7 +41,6 @@ export default function Home() {
     <>
     {user &&
     <main>
-      
 
         {/* main section */}
         <div className="main-section">
